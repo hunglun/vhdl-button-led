@@ -32,12 +32,21 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity BUTTON_LED is
---  Port ( );
+  generic (
+    NUM_BUTTONS : integer := 4
+  );
+  Port ( 
+    button : in std_logic_vector( NUM_BUTTONS - 1 downto 0);
+    enable : in std_logic_vector ( NUM_BUTTONS - 1 downto 0);
+    led: out std_logic_vector ( NUM_BUTTONS - 1 downto 0)
+  );
+
 end BUTTON_LED;
 
 architecture Behavioral of BUTTON_LED is
 
 begin
 
+    led <= button and enable;
 
 end Behavioral;
